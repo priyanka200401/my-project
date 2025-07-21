@@ -1,32 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Admin dashboard loaded");
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+const Admin = require('../models/admin');
+const Product = require('../models/product');
+const adminRoutes = require('../routes/admin');
 
-  // Check if stats are already in localStorage
-  let stats = JSON.parse(localStorage.getItem("dashboardStats"));
 
-  if (!stats) {
-    // If not, generate and save new mock data
-    stats = {
-      totalProducts: getRandomInt(100, 200),
-      totalOrders: getRandomInt(50, 100),
-      totalUsers: getRandomInt(30, 80),
-      monthlySales: getRandomInt(100000, 200000)
-    };
-    localStorage.setItem("dashboardStats", JSON.stringify(stats));
+// Admin Login
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const admin = await Admin.findOne({ email });
+  if (!admin || admin.password !== password) {
+    return res.status(401).json({ message: 'Invalid credentials' });
   }
-  
-
-  // Update UI
-  updateDashboard(stats);
+  const token = jwt.sign({ id: admin._id, role: 'admin' }, process.env.JWT_SECRET);
+  res.json({ token });
 });
 
-function updateDashboard(stats) {
-  document.getElementById("productCount").textContent = stats.totalProducts;
-  document.getElementById("orderCount").textContent = stats.totalOrders;
-  document.getElementById("userCount").textContent = stats.totalUsers;
-  document.getElementById("salesCount").textContent = `₹${stats.monthlySales.toLocaleString()}`;
-}
+// Admin Protected Routes
+router.get('/products', async (req, res) => {
+  const products = await Product.find();
+  res.json(products);
+});
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+router.post('/products', async (req, res) => {
+  const newProduct = new Product(req.body);
+  await newProduct.save();
+  res.status(201).json(newProduct);
+});
+
+router.delete('/products/:id', async (req, res) => {
+  await Product.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Product deleted' });
+});
+
+module.exports = router;

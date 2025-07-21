@@ -1,28 +1,26 @@
-async function addToWishlist(productId) {
- const token = localStorage.getItem('token');
-if (!token) {
-  alert("❗ Please login first.");
-  window.location.href = "/client/login.html";
-  return;
-}
+const express = require('express');
+const router = express.Router();
+const authenticateToken = require('../middleware/authenticateToken');
+const Wishlist = require('../models/wishlist');
+const Product = require('../models/product');
 
-fetch('/api/wishlist', {
-  headers: {
-    'Authorization': `Bearer ${token}`
+
+
+router.get('/', authenticateToken, async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const wishlist = await Wishlist.find({ userId })
+      .populate('productId'); // Make sure this is here
+
+    const result = wishlist.map(item => ({
+      product: item.productId
+    }));
+
+    res.json(result);
+  } catch (err) {
+    console.error("Wishlist fetch error:", err);
+    res.status(500).json({ message: 'Server Error' });
   }
-})
-
- fetch('/api/wishlist')
- {
-
-    const data = await res.json();
-
-    if (res.ok) {
-      alert("✅ Product added to your wishlist!");
-    } else if (res.status === 400 && data.message === "Already in wishlist") {
-      alert("⚠️ Product is already in your wishlist.");
-    } else {
-      alert("❌ " + (data.error || data.message || "Something went wrong"));
-    }
-  }
-}
+});
+module.exports = router;
