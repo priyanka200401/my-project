@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - ShopSavvy</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>ShopSavvy Admin</h2>
+      <ul>
+        <li><a href="admin.html" class="active">Dashboard</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="managecategories.html">Categories</a></li>
+        <li><a href="ordermanag.html">Orders</a></li>
+        <li><a href="managecustomer.html">Users</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="coupon.html">Coupons</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Welcome, Admin!</h1>
+      <div class="cards">
+        <div class="card">
+          <h3>Total Products</h3>
+          <p id="productCount">124</p>
+        </div>
+        <div class="card">
+          <h3>Total Orders</h3>
+          <p id="orderCount">89</p>
+        </div>
+        <div class="card">
+          <h3>Registered Users</h3>
+          <p id="userCount">57</p>
+        </div>
+        <div class="card">
+          <h3>Monthly Sales</h3>
+          <p id="salesCount">₹1,40,000</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

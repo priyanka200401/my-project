@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sales Reports - Admin | ShopSavvy</title>
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>ShopSavvy Admin</h2>
+      <ul>
+        <li><a href="admin.html">Dashboard</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="managecategories.html">Categories</a></li>
+        <li><a href="ordermanag.html">Orders</a></li>
+        <li><a href="managecustomer.html">Users</a></li>
+        <li><a href="report.html" class="active">Reports</a></li>
+        <li><a href="coupons.html">Coupons</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Sales Reports</h1>
+
+      <section class="summary">
+        <div class="card">
+          <h3>Total Revenue</h3>
+          <p>₹1,40,000</p>
+        </div>
+        <div class="card">
+          <h3>Orders This Month</h3>
+          <p>132</p>
+        </div>
+        <div class="card">
+          <h3>Top Product</h3>
+          <p>Wireless Earbuds</p>
+        </div>
+      </section>
+
+      <section class="orders-report">
+        <h2>Recent Orders</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#ORD1021</td>
+              <td>Priya Mehta</td>
+              <td>2025-07-12</td>
+              <td>₹2,300</td>
+              <td><span class="status delivered">Delivered</span></td>
+            </tr>
+            <tr>
+              <td>#ORD1020</td>
+              <td>Rahul Jain</td>
+              <td>2025-07-11</td>
+              <td>₹999</td>
+              <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td>#ORD1019</td>
+              <td>Anjali Desai</td>
+              <td>2025-07-10</td>
+              <td>₹1,200</td>
+              <td><span class="status cancelled">Cancelled</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

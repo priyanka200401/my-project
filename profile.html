@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile | SavvyDealsHub</title>
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+<body>
+  <div class="toggle-theme">
+    <button onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/120" id="profile-img" />
+      </div>
+
+      <h2 class="username" id="username">Loading...</h2>
+      <p class="email" id="email">...</p>
+      <p class="role" id="role">...</p>
+
+      <form id="edit-form">
+        <input type="text" id="edit-name" placeholder="Enter name" />
+        <input type="email" id="edit-email" placeholder="Enter email" />
+        <input type="text" id="edit-role" placeholder="Enter role" />
+        <button type="submit">Save Changes</button>
+      </form>
+
+      <div class="profile-actions">
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = '/client/login.html';
+
+    // Load profile data
+    fetch('http://localhost:5000/api/auth/profile', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(user => {
+      document.getElementById('username').innerText = user.username;
+      document.getElementById('email').innerText = user.email;
+      document.getElementById('role').innerText = user.role || 'User';
+
+      // prefill edit form
+      document.getElementById('edit-name').value = user.username;
+      document.getElementById('edit-email').value = user.email;
+      document.getElementById('edit-role').value = user.role || '';
+    });
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = '/client/login.html';
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Handle profile form submit (stubbed)
+    document.getElementById('edit-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Profile update coming soon (backend not implemented yet).");
+    });
+  </script>
+</body>
+</html>

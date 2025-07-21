@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Wishlist - SavvyDealsHub</title>
+<link rel="stylesheet" href="/css/wishlist.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">SavvyDealsHub</div>
+    <ul class="nav-links">
+       <li><a href="dashboard.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="buy-now.html">Cart</a></li>
+      <li><a href="login.html" id="logoutBtn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <h2 style="text-align:center;margin-top:20px;">Your Wishlist</h2>
+
+  <section id="wishlist-container" class="product-grid">
+    <!-- Wishlist items will be loaded here -->
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+  <script src="/js/wishlist.js"></script>
+</body>
+</html>

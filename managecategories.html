@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Categories - Admin | ShopSavvy</title>
+  <link rel="stylesheet" href="managecategories.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Manage Categories</h1>
+
+    <!-- Add Category Form -->
+    <form id="addCategoryForm">
+      <input type="text" id="categoryName" placeholder="Enter category name" required />
+      <button type="submit">Add Category</button>
+    </form>
+
+    <!-- Category List Table -->
+    <table id="categoryTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Category Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic category rows go here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="managecategories.js"></script>
+</body>
+</html>

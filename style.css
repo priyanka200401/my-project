@@ -1,0 +1,97 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Heading */
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+form input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+  outline: none;
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  background: #00bcd4;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #0199a7;
+}
+
+/* Switch Links */
+form p {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+form a {
+  color: #00bcd4;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

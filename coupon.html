@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Coupons - Admin | ShopSavvy</title>
+  <link rel="stylesheet" href="coupon.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>ShopSavvy Admin</h2>
+      <ul>
+        <li><a href="admin.html">Dashboard</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="managecategories.html">Categories</a></li>
+        <li><a href="ordermanag.html">Orders</a></li>
+        <li><a href="managecustomer.html">Users</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="coupons.html" class="active">Coupons</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Manage Coupons</h1>
+
+      <section class="add-coupon">
+        <h2>Create New Coupon</h2>
+        <form id="couponForm">
+          <input type="text" placeholder="Coupon Code" required />
+          <input type="number" placeholder="Discount (%)" required />
+          <input type="date" required />
+          <button type="submit">Add Coupon</button>
+        </form>
+      </section>
+
+      <section class="coupon-list">
+        <h2>Existing Coupons</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Discount</th>
+              <th>Expiry</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="couponTable">
+            <tr>
+              <td>NEWUSER50</td>
+              <td>50%</td>
+              <td>2025-08-01</td>
+              <td><span class="status active">Active</span></td>
+            </tr>
+            <tr>
+              <td>JULY10</td>
+              <td>10%</td>
+              <td>2025-07-20</td>
+              <td><span class="status expired">Expired</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
